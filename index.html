@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICEICMMEA-2026 | SRM Institute of Science and Technology</title>
+    <link rel="icon" href="favicon.webp" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #ffffff;
+        }
+
+        /* Minimal header with SRM branding */
+        .header {
+            background: #1e3a8a;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .srm-logo {
+            width: 45px;
+            height: 45px;
+            background: white;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 1rem;
+        }
+
+        .nav-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #fbbf24;
+        }
+
+        /* Hero section with video background placeholder */
+        .hero {
+            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8));
+            background-position: center;
+            color: white;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .conference-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .conference-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .conference-details {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .detail-item {
+            text-align: center;
+        }
+
+        .detail-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Minimal section styling */
+        .section {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-alt {
+            background: #f8fafc;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1e3a8a; /* Dark navy blue */
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Simple text-based content instead of cards */
+        .content-block {
+            margin-bottom: 3rem;
+        }
+
+        .content-block h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1e3a8a; /* Dark navy blue */
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #fbbf24; /* Yellow underline */
+            padding-bottom: 0.5rem;
+        }
+
+        .content-block p {
+            color: #4b5563;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        /* Simple lists instead of card grids */
+        .simple-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .simple-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e5e7eb;
+            color: #374151;
+        }
+
+        .simple-list li:last-child {
+            border-bottom: none;
+        }
+
+        .two-column-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .three-column-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        /* Minimal committee styling */
+        .committee-section {
+            background: #f8fafc;
+        }
+
+        .committee-group {
+            margin-bottom: 2rem;
+        }
+
+        .committee-group h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e3a8a; /* Dark navy blue */
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-left: 4px solid #fbbf24; /* Yellow accent line */
+            padding-left: 1rem;
+        }
+
+        .member-list {
+            list-style: none;
+        }
+
+        .member-list li {
+            padding: 0.3rem 0;
+            color: #4b5563;
+        }
+
+        .member-name {
+            font-weight: 500;
+            color: #fbbf24; /* SRM yellow for names */
+        }
+
+        /* Simple registration table */
+        .registration-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .pricing-table {
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .table-header {
+            background: #1e3a8a;
+            color: white;
+            padding: 1rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .table-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .table-row:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        .table-row:last-child {
+            border-bottom: none;
+        }
+
+        .dates-section h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        .date-list {
+            list-style: none;
+        }
+
+        .date-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .date-list li:last-child {
+            border-bottom: none;
+        }
+
+        .date-value {
+            font-weight: 500;
+            color: #fbbf24; /* SRM yellow for dates */
+        }
+
+        /* Added SRM theme colors - yellow and dark navy blue */
+        .highlight-text {
+            color: #fbbf24; /* SRM yellow */
+            font-weight: 600;
+        }
+
+        /* Added registration button styling */
+        .registration-button {
+            display: inline-block;
+            background: #fbbf24; /* SRM yellow */
+            color: #1e3a8a; /* Dark navy blue text */
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            margin: 2rem auto;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
+        }
+
+        .registration-button:hover {
+            background: #f59e0b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        /* Moved publication and payment details to main content */
+        .info-section {
+            background: #f8fafc;
+            padding: 3rem 2rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .info-block {
+            background: white;
+            padding: 2rem;
+            border-radius: 4px;
+            border-left: 4px solid #fbbf24; /* Yellow accent */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .info-block h3 {
+            color: #1e3a8a; /* Dark navy blue */
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .info-block p {
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        .bank-details {
+            font-family: 'Courier New', monospace;
+            background: #f3f4f6;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+
+        /* Footer styling */
+        .footer {
+            background: #1e3a8a;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .conference-title {
+                font-size: 1.8rem;
+            }
+
+            .conference-details {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .two-column-list,
+            .three-column-list {
+                grid-template-columns: 1fr;
+            }
+
+            .registration-content {
+                grid-template-columns: 1fr;
+            }
+
+            .table-row {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 20px; background-color: white; color: #1E3A8A;">
+    <!-- Logo -->
+    <img src="logo.png" alt="SRM Logo" style="width: 100px; height: auto;">
+    <div style="font-size: 1.5rem; font-weight: bold; margin-left: 10px;">ICEICMMEA-2026</div>
+
+    <nav style="margin-left: auto;">
+        <ul style="display: flex; list-style-type: none; margin: 0;">
+            <li style="margin-left: 20px;"><a href="#about" style="text-decoration: none; color: #1E3A8A; font-weight: bold;">About</a></li>
+            <li style="margin-left: 20px;"><a href="#speakers" style="text-decoration: none; color: #1E3A8A; font-weight: bold;">Speakers</a></li>
+            <li style="margin-left: 20px;"><a href="#committee" style="text-decoration: none; color: #1E3A8A; font-weight: bold;">Committee</a></li>
+            <li style="margin-left: 20px;"><a href="#registration" style="text-decoration: none; color:#1E3A8A; font-weight: bold;">Registration</a></li>
+            <li style="margin-left: 20px;"><a href="#topics" style="text-decoration: none; color: #1E3A8A; font-weight: bold;">Topics</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<!-- Hero Section -->
+<section class="hero" style="position: relative; height: 100vh; overflow: hidden;">
+    <div class="hero-content">
+        <!-- Video as Background -->
+        <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+            <source src="vid.mp4.MOV" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <!-- Hero Content -->
+        <h1 class="conference-title">International Conference on <span class="highlight-text">Emerging Innovations</span> in Computational Mathematics Modeling for Engineering Applications</h1>
+        <p class="highlight-text">ICEICMMEA-2026</p>
+        <div class="conference-details">
+            <div class="detail-item">
+                <div class="detail-label">Date</div>
+                <div class="detail-value">12-13 February, 2026</div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-label">Mode</div>
+                <div class="detail-value">Hybrid</div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-label">Organized by</div>
+                <div class="detail-value">Division of Mathematics, SRMIST Trichy</div>
+            </div>
+        </div>
+        
+        <!-- Added registration button in hero section -->
+        <div class="button-container">
+            <a href="  https://forms.gle/e4ks6R1JFhfZ6fGq7  " class="registration-button" target="_blank">
+                Register Now
+            </a>
+        </div>
+    </div>
+</section>
+
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title">About the Conference</h2>
+        
+        <div class="content-block">
+            <h3>SRM Institute of Science & Technology, Tiruchirappalli</h3>
+            <p>SRM Institute of Science & Technology, Tiruchirappalli with its abundant green lustre, superior ambience and eye-catching infrastructure continues to shine as a heavenly abode for students across India. SRMIST Tiruchirappalli within a span of three years has become one of the most sought out institutions for its globally recognised programs that immerse the students into the latest cutting-edge technologies adopted by leading industries.</p>
+            <p>Our team of highly-skilled faculty members with their outstanding expertise and competencies provide rich learning exposure and ample opportunities for students and research scholars thereby enabling them to face the competitiveness with confidence. SRMIST believes in collaboration and sees it as an opportunity to expand and to bring into its fold diverse and world-class academic experiences.</p>
+        </div>
+
+        <div class="content-block">
+            <h3>Department of Mathematics</h3>
+            <p>The Department of Mathematics, SRM Institute of Science and Technology Tiruchirappalli, was founded in 2021. This department consists of a vibrant and dedicated faculty with good research background to share their knowledge with students. It has a cohesive group of academic members in the domains of Analysis, Differential Equations, Fuzzy set theory & optimization, Graph theory, Mathematical Modeling, Fractional Calculus, Control Theory, Queueing Theory, and Stochastic processes who are actively engaged in broad areas of study in Mathematics and related subjects.</p>
+        </div>
+
+        <div class="content-block">
+            <h3>Aims and Objectives</h3>
+            <ul class="simple-list">
+                <li>To share recent advances in mathematics and their significance in various fields</li>
+                <li>Exchange recent developments and novel ideas in Mathematics among researchers</li>
+                <li>Our goal is to connect researchers from diverse fields and foster collaboration</li>
+                <li>Encourage new researchers to collaborate with experienced researchers and expand their knowledge</li>
+                <li>Offer a platform for researchers to present their findings</li>
+                <li>To promote discussions about the role of mathematics in modern society</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Speakers Section -->
+    <section id="speakers" class="section section-alt">
+        <h2 class="section-title">Tentative Speakers</h2>
+        <div class="two-column-list">
+            <ul class="simple-list">
+                <li><strong>Dr. Raju K. George</strong><br>Indian Institute of Space Science and Technology, Thiruvananthapuram</li>
+                <li><strong>Dr. R. Sakthivel</strong><br>Bharathiar University, Coimbatore</li>
+                <li><strong>Dr. S. Marshal Anthoni</strong><br>Anna University Regional Campus, CBE</li>
+                <li><strong>Dr. Rajeswari Seshadri</strong><br>Pondicherry University, Pondicherry</li>
+                <li><strong>Dr. V. Santhi</strong><br>National Institute of Technology, Tiruchirappalli</li>
+            </ul>
+            <ul class="simple-list">
+                <li><strong>Dr. R. Raja</strong><br>RCHM, Alagappa University, Karaikudi</li>
+                <li><strong>Dr Katta Ramesh</strong><br>Sunway University, Malaysia</li>
+                <li><strong>Dr Sathiyaraj Thambiayya</strong><br>UCSI University, Malaysia</li>
+                <li><strong>Dr. C.G. Karthick Babu</strong><br>Indian Statistical Institute, Kolkata</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Topics Section -->
+    <section id="topics" class="section">
+        <h2 class="section-title">Conference Topics</h2>
+        <div class="three-column-list">
+            <ul class="simple-list">
+                <li>Algebra</li>
+                <li>Graph Theory</li>
+                <li>Control Theory</li>
+                <li>Differential Equations</li>
+                <li>Fractional Calculus</li>
+                <li>Mathematical Modeling</li>
+            </ul>
+            <ul class="simple-list">
+                <li>Numerical Methods</li>
+                <li>Optimization Theory</li>
+                <li>Topology</li>
+                <li>Dynamical Systems</li>
+                <li>Fluid Mechanics</li>
+                <li>Fuzzy Mathematics</li>
+            </ul>
+            <ul class="simple-list">
+                <li>Machine Learning</li>
+                <li>Mathematical Physics</li>
+                <li>Number Theory</li>
+                <li>Operator Theory</li>
+                <li>Data Science & Algorithm</li>
+                <li>Neural Network</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Committee Section -->
+    <section id="committee" class="section committee-section">
+        <h2 class="section-title">Conference Committee</h2>
+        
+        <div class="committee-group">
+            <h4>Chief Patrons</h4>
+            <ul class="member-list">
+                <li><span class="member-name">Dr. R. Sivakumar</span> - Chairman, SRM Group of Institutions, Ramapuram & Tiruchirappalli</li>
+                <li><span class="member-name">Mr. S. Niranjan</span> - Co-Chairman, SRM Group of Institutions, Ramapuram & Tiruchirappalli</li>
+            </ul>
+        </div>
+
+        <div class="committee-group">
+            <h4>Patrons</h4>
+            <ul class="member-list">
+                <li><span class="member-name">Prof.(Dr.) Md. Sameeruddin Khan</span> - Pro Vice-Chancellor, SRMIST Tiruchirappalli</li>
+                <li><span class="member-name">Dr. R. Jagadeesh Kannan</span> - Dean (E&T), SRMIST Tiruchirappalli</li>
+                <li><span class="member-name">Dr. M. Sivaji</span> - Associate Professor & Head, Division of Mathematics, SRMIST Tiruchirappalli</li>
+            </ul>
+        </div>
+
+        <div class="committee-group">
+            <h4>Conveners</h4>
+            <ul class="member-list">
+                <li><span class="member-name">Dr. M. Venkatachalapathy</span> - Associate Professor, Division of Mathematics, SRMIST Tiruchirappalli (9865384924)</li>
+                <li><span class="member-name">Dr. S. Vimal Kumar</span> - Associate Professor, Division of Mathematics, SRMIST Tiruchirappalli (9361662521)</li>
+            </ul>
+        </div>
+
+        <div class="committee-group">
+           
+            <h4>Advisory Committee </h4>
+            <ul class="member-list">
+                 <li>Prof. R. Balakrishnan - Adjunct Professor, Bharathidasan University, Tiruchirappalli</li>
+    <li>Prof. K. Balachandran - Mentor Professor, Bharathiar University, Coimbatore</li>
+    <li>Dr. E. Natarajan - Indian Institute of Space Science and Technology (IIST), Thiruvananthapuram</li>
+    <li>Dr. S. Sundar - The Institute of Mathematical Sciences, Chennai</li>
+    <li>Dr. C. G. Karthick Babu - Indian Statistical Institute-Kolkata</li>
+    <li>Dr. Kalpana Muthusamy - UCSI University, Malaysia</li>
+    <li>Dr. A. K. Nandakumaran - Indian Institute of Science, Bangalore</li>
+    <li>Dr. Selvaraju Narayanasamy - IIT Guwahati</li>
+    <li>Dr. P. Prakash - Periyar University, Salem</li>
+    <li>Dr. C. Vijayalakshmi - Central University of Tamilnadu</li>
+    <li>Dr. V. Muthulakshmi - Periyar University, Salem</li>
+    <li>Dr. A. Tamilselvan - Bharathidasan University, Tiruchirappalli</li>
+    <li>Dr. V. Piramanantham - Bharathidasan University</li>
+    <li>Dr. Mohammad Javed Idrisi - Manav Rachna University</li>
+    <li>Dr. R. Samidurai - Thiruvalluvar University, Vellore</li>
+    <li>Dr. K. Kaliraj - RIASM, University of Madras</li>
+    <li>Dr. B. Sundaravadivoo - Central University of Tamil Nadu</li>
+    <li>Dr. Nageswara Rao - Jazan University, Jazan, Saudi Arabia</li>
+    <li>Dr. Kavikumar Jacob - University of Tun Hussein Onn, Malaysia</li>
+    <li>Dr. A. Vanavkumar - NIT, Arunachal Pradesh, India</li>
+    <li>Dr. Edward Samuel - Govt. Arts College, Trichy</li>
+    <li>Dr. D. Anuradha - VIT, Vellore</li>
+    <li>Dr. V. Subburayan - SRMIST, Kattankulathur</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="registration" class="section">
+        <h2 class="section-title">Registration & Important Dates</h2>
+        
+        <div class="registration-content">
+            <div>
+                <div class="pricing-table">
+                    <div class="table-header">Registration Fees</div>
+                    <div class="table-row">
+                        <div><strong>Category</strong></div>
+                        <div><strong>Offline</strong></div>
+                        <div><strong>Online</strong></div>
+                        <div><strong>Foreign</strong></div>
+                    </div>
+                    <div class="table-row">
+                        <div>PG Student</div>
+                        <div>Rs. 750</div>
+                        <div>Rs. 500</div>
+                        <div>$10</div>
+                    </div>
+                    <div class="table-row">
+                        <div>Research Scholar</div>
+                        <div>Rs. 1000</div>
+                        <div>Rs. 750</div>
+                        <div>$15</div>
+                    </div>
+                    <div class="table-row">
+                        <div>Faculty / Post-Doctoral / Scientist</div>
+                        <div>Rs. 1500</div>
+                        <div>Rs. 1000</div>
+                        <div>$20</div>
+                    </div>
+                    <div class="table-row">
+                        <div>Industry</div>
+                        <div>Rs. 1500</div>
+                        <div>Rs. 1250</div>
+                        <div>$20</div>
+                    </div>
+                </div>
+                
+                <!-- Added another registration button -->
+                <div class="button-container">
+                    <a href="https://forms.gle/e4ks6R1JFhfZ6fGq7  " class="registration-button" target="_blank">
+                        Complete Registration
+                    </a>
+                </div>
+            </div>
+
+            <div class="dates-section">
+                <h4>Important Dates</h4>
+                <ul class="date-list">
+                    <li>
+                        <span>Online Registration starts</span>
+                        <span class="date-value">19.09.2025</span>
+                    </li>
+                    <li>
+                        <span>Abstract Submission Deadline</span>
+                        <span class="date-value">02.02.2026</span>
+                    </li>
+                    <li>
+                        <span>Abstract Selection Decision</span>
+                        <span class="date-value">05.02.2026</span>
+                    </li>
+                    <li>
+                        <span>Registration Deadline</span>
+                        <span class="date-value">07.02.2026</span>
+                    </li>
+                    <li>
+                        <span>Full Paper Submission</span>
+                        <span class="date-value">07.02.2026</span>
+                    </li>
+                    <li>
+                        <span>Final Registration Deadline</span>
+                        <span class="date-value">10.02.2026</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Added new info section for publication and payment details -->
+    <section class="info-section">
+        <h2 class="section-title">Publication & Payment Information</h2>
+        <div class="info-grid">
+            <div class="info-block">
+                <h3>Publication Details</h3>
+                <p>All abstracts accepted for presentation will be published in the conference proceedings with an <span class="highlight-text">ISBN</span>. The published proceedings will be available to the participants.</p>
+                <p>Extended papers will be recommended for inclusion in <span class="highlight-text">Scopus-indexed/WoS journals/book chapters</span>, subject to meeting the scope, quality, and financial requirements of the journal.</p>
+                <p><strong>Proceedings Publication Date (estimated):</strong> <span class="highlight-text">April 2026</span></p>
+            </div>
+            
+            <div class="info-block">
+                <h3>Payment Details</h3>
+                <p>You can pay by bank account / scanning the QR code.</p>
+                <div class="bank-details">
+                    <strong>Name:</strong> SRM INSTITUTE OF SCIENCE AND TECHNOLOGY<br>
+                    <strong>Account Number:</strong> 510909010173736<br>
+                    <strong>Bank:</strong> CITY UNION BANK LTD<br>
+                    <strong>Branch:</strong> Irungalur, Trichy<br>
+                    <strong>IFSC:</strong> CIUB0000475475
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Location Map Section -->
+<section style="padding: 3rem 2rem; background: #f8fafc;">
+    <h2 style="font-size: 2rem; font-weight: 600; color: #1e3a8a; text-align: center; margin-bottom: 2rem;">
+        Conference Venue
+    </h2>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 1rem;">
+        <p style="text-align: center; margin-bottom: 1rem; font-weight: 500; color: #374151;">
+            SRM Institute of Science and Technology, Tiruchirappalli Campus
+        </p>
+        <div style="width: 100%; height: 400px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3917.093832613842!2d78.7540367!3d10.9562844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baafb9b231ae861%3A0xe015b4e7a6e2c2d6!2sSRM%20Institute%20of%20Science%20%26%20Technology%2C%20Tiruchirapalli%20Campus!5e0!3m2!1sen!2sin!4v1756993446621!5m2!1sen!2sin" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Quick Links Section -->
+<div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2);">
+    <h3 style="color: #fbbf24; font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">
+        Quick Links
+    </h3>
+    <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; margin-bottom: 1rem;">
+        Navigate easily through the important sections of our conference website.
+    </p>
+    <ul style="list-style: none; padding-left: 0; margin: 0;">
+        <li style="margin-bottom: 0.5rem;">
+            <a href="#about" style="color: white; text-decoration: none; transition: color 0.3s;">About the Conference</a>
+        </li>
+        <li style="margin-bottom: 0.5rem;">
+            <a href="#speakers" style="color: white; text-decoration: none; transition: color 0.3s;">Speakers</a>
+        </li>
+        <li style="margin-bottom: 0.5rem;">
+            <a href="#committee" style="color: white; text-decoration: none; transition: color 0.3s;">Committee</a>
+        </li>
+        <li style="margin-bottom: 0.5rem;">
+            <a href="#topics" style="color: white; text-decoration: none; transition: color 0.3s;">Conference Topics</a>
+        </li>
+        <li style="margin-bottom: 0.5rem;">
+            <a href="#registration" style="color: white; text-decoration: none; transition: color 0.3s;">Registration</a>
+        </li>
+    </ul>
+</div>
+
+            <!-- Simplified footer content -->
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem; margin-top: 2rem;">
+                <p>&copy; 2026 SRM Institute of Science and Technology, Tiruchirappalli. All rights reserved.</p>
+                <p style="margin-top: 1rem; opacity: 0.8;">Division of Mathematics | School of Sciences | Faculty of Engineering and Technology</p>
+            </div>
+            <!-- Developed By Section -->
+<div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2); text-align: center;">
+    <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">
+        Developed by 
+        <a href="  https://www.linkedin.com/in/shaktivel-t-k-803a75335/  " target="_blank" style="color: #fbbf24; text-decoration: none; font-weight: 600;">
+            Shaktivel T K
+        </a>, B.Tech CSE, SRMIST-Tiruchirappalli.
+    </p>
+</div>
+
+        </div>
+    </footer>
+
+    <script>
+        // Simple smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Simple scroll effect for header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(30, 58, 138, 0.95)';
+            } else {
+                header.style.background = '#1e3a8a';
+            }
+        });
+    </script>
+</body>
+</html> 
