@@ -436,6 +436,59 @@
                 text-align: center;
             }
         }
+
+        /* Guest Speaker Gallery Styling */
+.speaker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.speaker-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    border-top: 4px solid #fbbf24; /* SRM Yellow accent */
+    text-align: center;
+    padding: 2rem 1.5rem;
+}
+
+.speaker-card:hover {
+    transform: translateY(-10px);
+}
+
+.speaker-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1.5rem;
+    border: 3px solid #1e3a8a;
+    padding: 5px;
+}
+
+.speaker-card h3 {
+    color: #1e3a8a;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.speaker-affiliation {
+    color: #4b5563;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.speaker-topic {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #1e3a8a;
+    font-size: 0.85rem;
+}
     </style>
 </head>
 <body>
@@ -596,7 +649,7 @@ Kuala Lumpur, Malaysia</p>
         </div>
 </section>
 
-    <!-- Speakers Section -->
+    <!-- Speakers Section
     <section id="speakers" class="section section-alt">
         <h2 class="section-title">Invited Speakers</h2>
         <div class="two-column-list">
@@ -614,7 +667,7 @@ Kuala Lumpur, Malaysia</p>
                 <li><strong>Dr. C.G. Karthick Babu</strong><br>Indian Statistical Institute, Kolkata</li>
             </ul>
         </div>
-        </section>
+        </section> -->
  <section id="about" class="section">
         <h2 class="section-title">Call for papers</h2>
         
@@ -971,6 +1024,7 @@ journals.
     </script>
 </body>
 </html> 
+
 
 
 
